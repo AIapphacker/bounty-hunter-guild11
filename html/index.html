@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>海外华人互帮互助平台 - 文档中心</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Microsoft YaHei', 'PingFang SC', 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+        }
+        
+        .header h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .header h2 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            color: #3498db;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .content {
+            padding: 60px 40px;
+            background: white;
+        }
+        
+        .docs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .doc-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .doc-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #3498db, #9b59b6, #e74c3c);
+        }
+        
+        .doc-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            border-color: #3498db;
+        }
+        
+        .doc-card h3 {
+            color: #2c3e50;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+        
+        .doc-card p {
+            color: #7f8c8d;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+        
+        .doc-card .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .doc-card .btn:hover {
+            background: linear-gradient(135deg, #2980b9 0%, #1f5f8b 100%);
+            transform: scale(1.05);
+        }
+        
+        .intro {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .intro h2 {
+            color: #2c3e50;
+            font-size: 2.2em;
+            margin-bottom: 20px;
+        }
+        
+        .intro p {
+            color: #7f8c8d;
+            font-size: 1.1em;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+        
+        .feature {
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .feature-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+            color: #3498db;
+        }
+        
+        .feature h4 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .feature p {
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+        
+        .footer {
+            background: linear-gradient(135deg, #34495e 0%, #2c3e50 100%);
+            color: white;
+            text-align: center;
+            padding: 40px;
+            margin-top: 60px;
+        }
+        
+        .footer p {
+            margin: 10px 0;
+            opacity: 0.9;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 { font-size: 2.5em; }
+            .header h2 { font-size: 1.5em; }
+            .docs-grid { grid-template-columns: 1fr; }
+            .content { padding: 40px 20px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>海外华人互帮互助平台</h1>
+            <h2>Bounty Hunter Guild</h2>
+            <p>文档中心 - 项目完整文档集合</p>
+        </div>
+        
+        <div class="content">
+            <div class="intro">
+                <h2>项目文档概览</h2>
+                <p>欢迎来到海外华人互帮互助平台的文档中心。这里包含了项目的完整文档，涵盖了商业企划、技术架构、用户流程、资金流程、审核机制和商业模式等各个方面。</p>
+            </div>
+            
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon">📊</div>
+                    <h4>商业企划</h4>
+                    <p>完整的商业计划和市场分析</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🏗️</div>
+                    <h4>技术架构</h4>
+                    <p>系统技术架构和实现方案</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🔄</div>
+                    <h4>用户流程</h4>
+                    <p>完整的用户使用流程设计</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">💰</div>
+                    <h4>资金流程</h4>
+                    <p>支付和资金流向设计</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🔍</div>
+                    <h4>审核机制</h4>
+                    <p>AI+人工混合审核系统</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">💡</div>
+                    <h4>商业模式</h4>
+                    <p>盈利模式和商业策略</p>
+                </div>
+            </div>
+            
+            <div class="docs-grid">
+                <div class="doc-card">
+                    <h3>商业企划书</h3>
+                    <p>完整的商业企划书，包含市场分析、产品服务、商业模式、运营策略、技术架构、团队介绍、财务预测和风险控制等完整内容。</p>
+                    <a href="商业企划书.html" class="btn">查看文档</a>
+                </div>
+                
+                <div class="doc-card">
+                    <h3>技术架构图</h3>
+                    <p>详细的技术架构设计，包含系统整体架构、前端架构、后端架构、数据架构、支付架构和安全架构等完整技术方案。</p>
+                    <a href="技术架构图.html" class="btn">查看文档</a>
+                </div>
+                
+                <div class="doc-card">
+                    <h3>用户流程图</h3>
+                    <p>完整的用户使用流程，包含用户注册、身份认证、钱包绑定、任务发布、任务接单、任务执行、支付结算和评价反馈等完整流程。</p>
+                    <a href="用户流程图.html" class="btn">查看文档</a>
+                </div>
+                
+                <div class="doc-card">
+                    <h3>资金流程图</h3>
+                    <p>详细的资金流向设计，包含雇主充值、任务发布资金托管、任务执行期间资金状态、任务完成资金释放、佣金计算和分配等完整流程。</p>
+                    <a href="资金流程图.html" class="btn">查看文档</a>
+                </div>
+                
+                <div class="doc-card">
+                    <h3>审核机制图</h3>
+                    <p>AI+人工混合审核机制，包含AI预审核流程、风险分级系统、人工复审流程、争议处理审核、持续学习优化和安全防护机制等完整设计。</p>
+                    <a href="审核机制图.html" class="btn">查看文档</a>
+                </div>
+                
+                <div class="doc-card">
+                    <h3>商业模式图</h3>
+                    <p>完整的商业模式分析，包含价值主张和价值创造、收入来源结构、成本结构分析、盈利模式设计、用户增长和收入增长关系等完整分析。</p>
+                    <a href="商业模式图.html" class="btn">查看文档</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>本文档为机密文件，仅供投资人和内部团队使用</p>
+            <p>© 2025 Bounty Hunter Guild. All rights reserved.</p>
+            <p>海外华人互帮互助平台 - 连接全球华人，实现互帮互助</p>
+        </div>
+    </div>
+</body>
+</html>
+
+

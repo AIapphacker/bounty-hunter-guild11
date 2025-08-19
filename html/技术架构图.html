@@ -1,0 +1,284 @@
+﻿<!DOCTYPE html>
+<html lang='zh-CN'>
+<head>
+    <meta charset='UTF-8'>
+    <title>技术架构图 - 海外华人互帮互助平台</title>
+    <style>
+        body { font-family: 'Microsoft YaHei', Arial, sans-serif; margin: 40px; line-height: 1.6; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; }
+        .container { max-width: 1200px; margin: 0 auto; background: white; padding: 40px; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+        h1 { color: #2c3e50; border-bottom: 3px solid #3498db; padding-bottom: 10px; text-align: center; font-size: 2.5em; }
+        h2 { color: #34495e; border-bottom: 2px solid #ecf0f1; padding-bottom: 8px; margin-top: 30px; }
+        h3 { color: #7f8c8d; margin-top: 25px; }
+        code { background: #f8f9fa; padding: 2px 6px; border-radius: 4px; font-family: monospace; color: #e83e8c; }
+        pre { background: #2c3e50; color: white; padding: 20px; border-radius: 10px; overflow-x: auto; margin: 20px 0; border-left: 5px solid #3498db; }
+        .header { background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%); color: white; padding: 30px; text-align: center; margin: -40px -40px 40px -40px; border-radius: 20px 20px 0 0; }
+        .nav { background: #f8f9fa; padding: 20px 40px; margin: -40px -40px 40px -40px; border-bottom: 1px solid #dee2e6; text-align: center; }
+        .nav a { color: #3498db; text-decoration: none; margin: 0 15px; padding: 10px 20px; border-radius: 25px; transition: all 0.3s ease; display: inline-block; }
+        .nav a:hover { background: #3498db; color: white; transform: translateY(-2px); }
+        p { margin: 15px 0; line-height: 1.8; }
+        ul, ol { margin: 15px 0; padding-left: 30px; }
+        li { margin: 8px 0; }
+        strong { color: #e74c3c; font-weight: 600; }
+        em { color: #9b59b6; font-style: italic; }
+    </style>
+</head>
+<body>
+    <div class='container'>
+        <div class='header'>
+            <h1>技术架构图</h1>
+            <p>海外华人互帮互助平台 - Bounty Hunter Guild</p>
+        </div>
+        <div class='nav'>
+            <a href='商业企划书.html'>商业企划书</a>
+            <a href='技术架构图.html'>技术架构</a>
+            <a href='用户流程图.html'>用户流程</a>
+            <a href='资金流程图.html'>资金流程</a>
+            <a href='审核机制图.html'>审核机制</a>
+            <a href='商业模式图.html'>商业模式</a>
+        </div>
+        <div class='content'>
+            <h1>技术架构图</h1>
+
+            <h2>系统整体架构</h2>
+
+            <pre><code>┌─────────────────────────────────────────────────────────────────┐
+│                        用户层 (User Layer)                        │
+├─────────────────────────────────────────────────────────────────┤
+│  Web用户 (Next.js)  │  移动用户 (React Native)  │  管理用户 (Admin)  │
+└─────────────────────────────────────────────────────────────────┘
+                                    │
+                                    ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                      API网关层 (API Gateway)                     │
+├─────────────────────────────────────────────────────────────────┤
+│  负载均衡  │  限流控制  │  安全防护  │  请求路由  │  监控日志  │
+└─────────────────────────────────────────────────────────────────┘
+                                    │
+                                    ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                    业务服务层 (Business Services)                 │
+├─────────────────────────────────────────────────────────────────┤
+│  用户服务  │  任务服务  │  支付服务  │  通信服务  │  AI服务    │
+│  (User)    │  (Task)    │  (Payment) │  (Chat)    │  (AI)      │
+└─────────────────────────────────────────────────────────────────┘
+                                    │
+                                    ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                      数据层 (Data Layer)                         │
+├─────────────────────────────────────────────────────────────────┤
+│  PostgreSQL  │  Redis  │  MongoDB  │  文件存储  │  区块链    │
+│  (用户数据)   │  (缓存)  │  (任务数据) │  (媒体文件) │  (支付数据) │
+└─────────────────────────────────────────────────────────────────┘
+                                    │
+                                    ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                   基础设施层 (Infrastructure)                     │
+├─────────────────────────────────────────────────────────────────┤
+│  AWS云服务  │  CDN  │  监控系统  │  日志系统  │  备份系统  │
+└─────────────────────────────────────────────────────────────────┘</code></pre>
+
+            <h2>详细模块架构</h2>
+
+            <h3>1. 前端架构 (Frontend Architecture)</h3>
+
+            <pre><code>┌─────────────────────────────────────────────────────────────────┐
+│                        Next.js Web应用                          │
+├─────────────────────────────────────────────────────────────────┤
+│  页面组件  │  状态管理  │  API调用  │  路由管理  │  国际化    │
+│  (Pages)   │  (Zustand) │  (Axios)  │  (Router)  │  (i18n)   │
+└─────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────┐
+│                     React Native 移动应用                        │
+├─────────────────────────────────────────────────────────────────┤
+│  原生组件  │  导航系统  │  推送通知  │  离线支持  │  性能优化  │
+│  (Native)  │  (Navigation) │  (Push)   │  (Offline) │  (Performance) │
+└─────────────────────────────────────────────────────────────────┘</code></pre>
+
+            <h3>2. 后端架构 (Backend Architecture)</h3>
+
+            <pre><code>┌─────────────────────────────────────────────────────────────────┐
+│                        Express 服务                             │
+├─────────────────────────────────────────────────────────────────┤
+│  中间件    │  路由控制  │  控制器    │  服务层    │  数据访问层 │
+│  (Middleware) │  (Routes)  │  (Controllers) │  (Services) │  (DAO)     │
+└─────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────┐
+│                        AI 服务模块                              │
+├─────────────────────────────────────────────────────────────────┤
+│  OpenAI API │  内容分析  │  分类推荐  │  风险检测  │  智能匹配  │
+│  (GPT-4)    │  (Analysis) │  (Classification) │  (Risk)    │  (Matching) │
+└─────────────────────────────────────────────────────────────────┘</code></pre>
+
+            <h3>3. 数据架构 (Data Architecture)</h3>
+
+            <pre><code>┌─────────────────────────────────────────────────────────────────┐
+│                       数据库设计                                │
+├─────────────────────────────────────────────────────────────────┤
+│  PostgreSQL (主数据库)                                          │
+│  ├── 用户表 (users)                                             │
+│  ├── 任务表 (tasks)                                             │
+│  ├── 交易表 (transactions)                                      │
+│  ├── 评价表 (reviews)                                           │
+│  └── 系统表 (system)                                            │
+│                                                                 │
+│  Redis (缓存数据库)                                             │
+│  ├── 会话缓存 (sessions)                                        │
+│  ├── 任务缓存 (task_cache)                                      │
+│  ├── 用户缓存 (user_cache)                                      │
+│  └── 系统缓存 (system_cache)                                    │
+│                                                                 │
+│  MongoDB (文档数据库)                                           │
+│  ├── 任务详情 (task_details)                                    │
+│  ├── 聊天记录 (chat_logs)                                       │
+│  ├── 系统日志 (system_logs)                                     │
+│  └── 分析数据 (analytics)                                       │
+└─────────────────────────────────────────────────────────────────┘</code></pre>
+
+            <h3>4. 支付架构 (Payment Architecture)</h3>
+
+            <pre><code>┌─────────────────────────────────────────────────────────────────┐
+│                       支付系统架构                              │
+├─────────────────────────────────────────────────────────────────┤
+│  用户钱包  │  任务托管  │  智能合约  │  支付网关  │  风控系统  │
+│  (Wallet)  │  (Escrow)  │  (Smart Contract) │  (Gateway) │  (Risk)    │
+└─────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────┐
+│                       区块链集成                                │
+├─────────────────────────────────────────────────────────────────┤
+│  USDT (ERC-20)  │  USDT (TRC-20)  │  USDC  │  其他代币  │
+│  (以太坊网络)    │  (波场网络)      │  (稳定币) │  (扩展性)  │
+└─────────────────────────────────────────────────────────────────┘</code></pre>
+
+            <h3>5. 安全架构 (Security Architecture)</h3>
+
+            <pre><code>┌─────────────────────────────────────────────────────────────────┐
+│                       安全防护体系                              │
+├─────────────────────────────────────────────────────────────────┤
+│  身份认证  │  权限控制  │  数据加密  │  通信加密  │  审计日志  │
+│  (Auth)    │  (RBAC)    │  (Encryption) │  (TLS)    │  (Audit)  │
+└─────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────┐
+│                       内容安全                                  │
+├─────────────────────────────────────────────────────────────────┤
+│  AI审核    │  人工审核  │  关键词过滤 │  行为分析  │  举报处理  │
+│  (AI Review) │  (Manual) │  (Filter)   │  (Behavior) │  (Report) │
+└─────────────────────────────────────────────────────────────────┘</code></pre>
+
+            <h2>技术栈详情</h2>
+
+            <h3>前端技术栈</h3>
+            <ul>
+                <li><strong>框架</strong>：Next.js 14, React 18</li>
+                <li><strong>语言</strong>：TypeScript</li>
+                <li><strong>样式</strong>：Tailwind CSS, Headless UI</li>
+                <li><strong>状态管理</strong>：Zustand</li>
+                <li><strong>表单处理</strong>：React Hook Form, Zod</li>
+                <li><strong>国际化</strong>：next-i18next</li>
+                <li><strong>地图服务</strong>：Google Maps API</li>
+            </ul>
+
+            <h3>后端技术栈</h3>
+            <ul>
+                <li><strong>运行时</strong>：Node.js</li>
+                <li><strong>框架</strong>：Express.js</li>
+                <li><strong>语言</strong>：TypeScript</li>
+                <li><strong>数据库</strong>：PostgreSQL, Redis, MongoDB</li>
+                <li><strong>ORM</strong>：Prisma</li>
+                <li><strong>认证</strong>：JWT, Passport.js</li>
+                <li><strong>实时通信</strong>：WebSocket, Socket.io</li>
+            </ul>
+
+            <h3>AI技术栈</h3>
+            <ul>
+                <li><strong>核心AI</strong>：OpenAI GPT-4 API</li>
+                <li><strong>功能调用</strong>：Function Calling</li>
+                <li><strong>向量化</strong>：Embeddings API</li>
+                <li><strong>内容审核</strong>：Moderation API</li>
+                <li><strong>自然语言处理</strong>：NLP技术</li>
+            </ul>
+
+            <h3>区块链技术栈</h3>
+            <ul>
+                <li><strong>稳定币</strong>：USDT (ERC-20, TRC-20), USDC</li>
+                <li><strong>智能合约</strong>：Solidity (以太坊), Tron (波场)</li>
+                <li><strong>钱包集成</strong>：MetaMask, WalletConnect, TronLink</li>
+                <li><strong>支付网络</strong>：以太坊, 波场, BSC</li>
+            </ul>
+
+            <h3>基础设施技术栈</h3>
+            <ul>
+                <li><strong>云服务</strong>：AWS (EC2, RDS, S3, CloudFront)</li>
+                <li><strong>部署</strong>：Vercel, Docker, Kubernetes</li>
+                <li><strong>监控</strong>：Prometheus, Grafana, ELK Stack</li>
+                <li><strong>CI/CD</strong>：GitHub Actions</li>
+                <li><strong>CDN</strong>：CloudFront, 阿里云CDN</li>
+            </ul>
+
+            <h2>系统特性</h2>
+
+            <h3>高性能特性</h3>
+            <ul>
+                <li><strong>缓存策略</strong>：Redis缓存热点数据，CDN加速静态资源</li>
+                <li><strong>数据库优化</strong>：读写分离，索引优化，连接池管理</li>
+                <li><strong>异步处理</strong>：消息队列处理耗时任务，提高响应速度</li>
+                <li><strong>负载均衡</strong>：多实例部署，自动扩缩容</li>
+            </ul>
+
+            <h3>高可用特性</h3>
+            <ul>
+                <li><strong>故障转移</strong>：多区域部署，自动故障转移</li>
+                <li><strong>数据备份</strong>：定期数据备份，多副本存储</li>
+                <li><strong>监控告警</strong>：实时监控系统状态，异常自动告警</li>
+                <li><strong>降级策略</strong>：核心功能优先，非核心功能可降级</li>
+            </ul>
+
+            <h3>可扩展特性</h3>
+            <ul>
+                <li><strong>微服务架构</strong>：模块化设计，独立部署和扩展</li>
+                <li><strong>水平扩展</strong>：支持多实例部署，根据负载自动扩展</li>
+                <li><strong>多租户支持</strong>：为未来多区域扩展做准备</li>
+                <li><strong>插件化设计</strong>：支持功能模块的即插即用</li>
+            </ul>
+
+            <h2>部署架构</h2>
+
+            <h3>开发环境</h3>
+            <ul>
+                <li><strong>本地开发</strong>：Docker Compose，一键启动所有服务</li>
+                <li><strong>代码管理</strong>：Git + GitHub，分支管理，代码审查</li>
+                <li><strong>测试环境</strong>：自动化测试，持续集成</li>
+            </ul>
+
+            <h3>生产环境</h3>
+            <ul>
+                <li><strong>容器化部署</strong>：Docker容器，Kubernetes编排</li>
+                <li><strong>云原生架构</strong>：AWS云服务，自动扩缩容</li>
+                <li><strong>监控运维</strong>：Prometheus + Grafana，ELK日志分析</li>
+                <li><strong>安全防护</strong>：WAF，DDoS防护，SSL证书</li>
+            </ul>
+
+            <h2>技术风险与应对</h2>
+
+            <h3>技术风险</h3>
+            <ul>
+                <li><strong>AI模型风险</strong>：模型偏见，错误决策，应对：人工审核，持续优化</li>
+                <li><strong>区块链风险</strong>：网络拥堵，交易失败，应对：多链支持，智能重试</li>
+                <li><strong>系统安全风险</strong>：黑客攻击，数据泄露，应对：多层防护，定期安全审计</li>
+                <li><strong>性能风险</strong>：高并发，响应延迟，应对：性能测试，优化策略</li>
+            </ul>
+
+            <h3>应对策略</h3>
+            <ul>
+                <li><strong>技术选型</strong>：选择成熟稳定的技术栈，降低技术风险</li>
+                <li><strong>架构设计</strong>：采用微服务架构，提高系统可维护性和可扩展性</li>
+                <li><strong>测试策略</strong>：全面的测试覆盖，包括单元测试、集成测试、性能测试</li>
+                <li><strong>监控告警</strong>：完善的监控体系，及时发现和解决问题</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
